@@ -19,6 +19,7 @@
     </div>
 </template>
 <script>
+	import {setToken} from '@/http/auth.js'
     export default {
         data() {
             return {
@@ -43,9 +44,16 @@
         methods: {
             // 提交表单
             dataFormSubmit() {
-                // TODO：登录代码逻辑待完善
-                alert("登录代码逻辑未完善")
+            // TODO：登录代码逻辑待完善
+            // alert("登录代码逻辑未完善")
+            this.$http({
+                url: '/auth/token',
+                method: 'get'
+            }).then(response => {
+                console.log(response)
+				setToken(response.data.token)
                 this.$router.replace({name: 'Home'})
+            })
             }
         }
     }
