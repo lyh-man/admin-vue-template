@@ -1,0 +1,34 @@
+{
+    "login": {
+        "title": "管理员登录",
+        "userName": "用户名",
+        "password": "密码",
+        "language": "语言选择",
+        "signIn": "登录",
+        "userNameNotNull": "用户名不能为空",
+        "passwordNotNull": "密码不能为空",
+        "signInSuccess": "登录成功"
+    },
+    "language": {
+        "setting": "设置",
+        "languageSettings": "语言设置: ",
+        "zh": "中文",
+        "en": "英语"
+    },
+    "header": {
+        "foldAside": "折叠侧边栏",
+        "unFoldAside": "展开侧边栏",
+        "setUp": "设置",
+        "help": "帮助",
+        "blogAddress": "博客地址",
+        "codeAddress": "代码地址",
+        "userSetUp": "用户设置",
+        "updatePassword": "修改密码",
+        "logOut": "退出"
+    },
+    "aside": {
+        "adminCenter": "后台管理中心",
+        "admin": "后台",
+        "homePage": "首页"
+    }
+}

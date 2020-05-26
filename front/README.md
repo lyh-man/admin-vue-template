@@ -7,6 +7,8 @@
 
 [SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 前端篇（三）：引入 js-cookie、axios、mock 封装请求处理以及返回结果](https://www.cnblogs.com/l-y-h/p/12955001.html)
 
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 前端篇（四）：引入 vuex 进行状态管理、引入 vue-i18n 进行国际化管理](https://www.cnblogs.com/l-y-h/p/12963576.html)
+
 ## 代码地址
 [admin-vue-template](https://github.com/lyh-man/admin-vue-template.git)
 

@@ -1,0 +1,34 @@
+{
+    "login": {
+        "title": "Administrator Login",
+        "userName": "UserName",
+        "password": "Password",
+        "language": "Language",
+        "signIn": "SignIn",
+        "userNameNotNull": "UserName Not Null",
+        "passwordNotNull": "Password Not Null",
+        "signInSuccess": "SignIn Success"
+    },
+    "language": {
+        "setting": "Settings",
+        "languageSettings": "Language Settings: ",
+        "zh": "Chinese",
+        "en": "English"
+    },
+    "header": {
+        "foldAside": "Fold Aside",
+        "unFoldAside": "Un Fold Aside",
+        "setUp": "SetUp",
+        "help": "Help",
+        "blogAddress": "Blog Address",
+        "codeAddress": "Code Address",
+        "userSetUp": "User SetUp",
+        "updatePassword": "Update Password",
+        "logOut": "LogOut"
+    },
+    "aside": {
+        "adminCenter": "Admin Center",
+        "admin": "AC",
+        "homePage": "Home Page"
+    }
+}
