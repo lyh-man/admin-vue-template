@@ -61,23 +61,25 @@
 		methods: {
 			...mapActions('user', ['updateName']),
 			...mapActions('common', {
-				updateLang: "updateLanguage"
+				updateLang: "updateLanguage",
+				resetState: "resetState"
 			}),
 			// 提交表单
 			dataFormSubmit() {
-				// TODO：登录代码逻辑待完善
-				// alert("登录代码逻辑未完善")
-				this.$http({
-					url: '/auth/token',
-					method: 'get'
-				}).then(response => {
-					console.log(response)
-					setToken(response.data.token)
-					this.updateName(this.dataForm.userName)
-					this.$router.replace({
-						name: 'Home'
-					})
-				})
+			    // TODO：登录代码逻辑待完善
+			    // alert("登录代码逻辑未完善")
+			    this.$http.login.getToken().then(response => {
+			        this.$message({
+			            message: this.$t("login.signInSuccess"),
+			            type: 'success'
+			        })
+			        // 保存 token
+			        setToken(response.data.token)
+			        this.updateName(this.dataForm.userName)
+			        this.$router.push({
+			            name: 'Home'
+			        })
+			    })
 			},
 			// 修改语言
 			updateLanguage() {
@@ -98,6 +100,9 @@
 			}
 		},
 		created() {
+			// 进入画面前，移除主页面保存的 state 信息
+			localStorage.removeItem("store")
+			this.resetState()
 			// 登录页面，默认选择当前语言
 			this.dataForm.language = this.$i18n.locale
 			this.dataRule = {

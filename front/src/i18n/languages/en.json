@@ -30,5 +30,11 @@
         "adminCenter": "Admin Center",
         "admin": "AC",
         "homePage": "Home Page"
-    }
+    },
+	"tab": {
+	    "closeCurrentTabs": "Close Current Tabs",
+	    "closeOtherTabs": "Close Other Tabs",
+	    "closeAllTabs": "Close All Tabs",
+	    "refreshCurrentTabs": "Refresh Current Tabs"
+	}
 }

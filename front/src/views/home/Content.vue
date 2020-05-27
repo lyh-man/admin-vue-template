@@ -1,6 +1,7 @@
 <template>
     <el-main class="content">
-        <el-card class="card" shadow="hover">
+        <Tab v-if="$route.meta.isTab"></Tab>
+        <el-card v-else class="card" shadow="hover">
             <keep-alive>
                 <router-view />
             </keep-alive>
@@ -9,8 +10,12 @@
 </template>
 
 <script>
+    import Tab from '@/views/home/Tab.vue'
     export default {
-        name: 'Content'
+        name: 'Content',
+        components:{
+            Tab
+        }
     }
 </script>
 
@@ -18,6 +23,7 @@
     .content {
         background-color: #f1f4f5;
     }
+
     .card {
         height: 100%;
     }
