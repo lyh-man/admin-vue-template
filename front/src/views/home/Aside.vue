@@ -40,6 +40,7 @@
                             <span slot="title">baidu</span>
                         </el-menu-item>
                     </el-submenu>
+					<DynamicMenu v-for="menu in dynamicRoutes" :key="menu.meta.menuId" :menu="menu"></DynamicMenu>
                 </el-menu>
             </el-scrollbar>
         </el-aside>
@@ -54,6 +55,7 @@
 	import {
 		isURL
 	} from '@/utils/validate.js'
+	import DynamicMenu from '@/views/dynamic/DynamicMenu.vue'
 	export default {
 		name: 'Aside',
 		props: ['foldAside'],
@@ -67,8 +69,11 @@
 				iconSize: 'true'
 			}
 		},
+		components: {
+			DynamicMenu
+		},
 		computed: {
-			...mapState('common', ['menuActiveName', 'mainTabs']),
+			...mapState('common', ['menuActiveName', 'mainTabs', 'dynamicRoutes']),
 			// 国际化
 			language() {
 				return {

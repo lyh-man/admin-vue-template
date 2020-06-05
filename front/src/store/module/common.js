@@ -10,7 +10,9 @@ export default {
         // 表示标签页数据，数组
         mainTabs: [],
         // 表示标签页中选中的标签名
-        mainTabsActiveName: ''
+        mainTabsActiveName: '',
+        // 用于保存动态路由的数据
+        dynamicRoutes: []
     },
     // 更改 state（同步）
     mutations: {
@@ -26,15 +28,19 @@ export default {
         updateMainTabsActiveName(state, name) {
             state.mainTabsActiveName = name
         },
-		resetState(state) {
-			let stateTemp = {
-				language: 'zh',
-				menuActiveName: '',
-				mainTabs: [],
-				mainTabsActiveName: ''
-			}
-			Object.assign(state, stateTemp)
-		}
+        updateDynamicRoutes(state, routes) {
+            state.dynamicRoutes = routes
+        },
+        resetState(state) {
+            let stateTemp = {
+                language: 'zh',
+                menuActiveName: '',
+                mainTabs: [],
+                mainTabsActiveName: '',
+                dynamicRoutes: []
+            }
+            Object.assign(state, stateTemp)
+        }
     },
     // 异步触发 mutations
     actions: {
@@ -50,8 +56,11 @@ export default {
         updateMainTabsActiveName({commit, state}, name) {
             commit("updateMainTabsActiveName", name)
         },
-		resetState({commit, state}) {
-			commit("resetState")
-		}
+        updateDynamicRoutes({commit, state}, routes) {
+            commit("updateDynamicRoutes", routes)
+        },
+        resetState({commit, state}) {
+            commit("resetState")
+        }
     }
 }
