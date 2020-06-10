@@ -1,0 +1,17 @@
+# 配置端口号
+server:
+  port: 8000
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/admin_template?useUnicode=true&characterEncoding=utf8
+  # 配置环境（dev 开发环境、prod 生产环境）
+  profiles:
+    active: dev
+  # 配置国际化，basename 指定国际化文件前缀
+  messages:
+    basename: static/i18n/messages
+    encoding: UTF-8
