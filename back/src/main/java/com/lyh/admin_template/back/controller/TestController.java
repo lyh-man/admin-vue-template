@@ -13,9 +13,14 @@ import com.lyh.admin_template.back.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 
 /**
@@ -30,6 +35,30 @@ public class TestController {
     private UserService userService;
     @Autowired
     private MessageSourceUtil messageSourceUtil;
+    @Resource
+    private ValueOperations valueOperations;
+
+    @Cacheable(value = "list", key = "'userList'")
+    @ApiOperation(value = "测试 Redis 缓存注解 @Cacheable")
+    @GetMapping("/testRedis/cacheable")
+    public Result testRedisCacheable() {
+        return Result.ok().data("item", userService.list());
+    }
+
+    @CachePut(value = "list", key = "'userList2'")
+    @ApiOperation(value = "测试 Redis 缓存注解 @CachePut")
+    @GetMapping("/testRedis/cachePut")
+    public Result testRedisCachePut() {
+        return Result.ok().data("item", userService.list());
+    }
+
+    @CacheEvict(value = "list", key = "'userList'")
+//    @CacheEvict(value = "list", key = "'userList'", allEntries=true)
+    @ApiOperation(value = "测试 Redis 缓存注解 @CacheEvict")
+    @GetMapping("/testRedis/cacheEvict")
+    public Result testRedisCacheEvict() {
+        return Result.ok().data("item", userService.list());
+    }
 
     @ApiOperation(value = "测试国际化返回数据")
     @GetMapping("/testLocale")
