@@ -36,3 +36,31 @@ spring:
         max-idle: 5
         # 最小空闲连接 默认为 0
         min-idle: 0
+  # mail 配置
+  mail:
+    # SMTP 服务器地址
+    host: smtp.163.com
+    # 邮件服务器账号
+    username: m_17730125031@163.com
+    # 授权码
+    password: KFYRVDQAUXLNBSUO
+    # 配置端口号（默认使用 25，若项目发布到云服务器，需要开放相应端口 465，需要配置相关 ssl 协议）
+    port: 465
+    # 编码字符集采用 UTF-8
+    default-encoding: UTF-8
+    # 配置 ssl 协议（端口为 25 时，可以不用配置）
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+  # 文件上传大小配置
+  servlet:
+    multipart:
+      # 限制单个文件大小
+      max-file-size: 10MB
+      # 限制单次请求总文件大小
+      max-request-size: 50MB

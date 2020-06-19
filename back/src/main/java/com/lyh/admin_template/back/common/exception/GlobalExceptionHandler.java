@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Result handlerException(Exception e) {
         logger.error(e.getMessage(), e);
-        return Result.error().message("系统异常");
+        return Result.error().message(e.getMessage());
     }
 
     /**
