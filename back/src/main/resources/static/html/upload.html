@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.3.7/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui@2.3.7/lib/index.js"></script>
+</head>
+<body>
+<div id="test">
+    <!--
+        使用 element-ui 上传组件 （el-upload）。
+        action 用于指定上传的地址（必写）。
+        on-preview 点击文件列表中文件触发。
+        on-remove 移除文件列表中文件触发。
+        before-upload 用于上传文件前触发（可用于检测文件大小、格式之类的）。
+        on-success 文件上传成功后触发。
+        on-error 文件上传失败触发。
+        multiple 用于支持选择多文件。
+        limit 表示每次可以选择的文件数目。
+        on-exceed 文件数目超出限制时触发。
+        file-list 表示上传文件列表。
+        data 表示额外传递的参数。
+        accept 用于指定格式（默认 * ）
+     -->
+    <el-upload :action="policyData.host" :on-preview="handlePreview" :on-remove="handleRemove" :before-upload="beforeUpload"
+               :on-success="handleSuccess" :on-error="handleError" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList"
+               :data="policyData" accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG,.gif,.GIF">
+        <el-button size="small" type="primary">点击上传</el-button>
+        <!-- tip 表示提示文字 -->
+        <div slot="tip">只能上传jpg/png/gif文件，且不超过 5 MB</div>
+    </el-upload>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#test",
+        data: {
+            fileList: [{
+                name: 'food.jpeg',
+                url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+            }],
+            policyData: {
+                "signature": "H3mPx51DPO73i0NJKTLgzvjX5dA=",
+                "expire": "1592989560",
+                "host": "http://admin-vue-template.oss-cn-beijing.aliyuncs.com",
+                "ossaccessKeyId": "LTAI4GEWZbLZocBzXKYEfmmq",
+                "key": "aliyun/20200624/be4678d9d2db4e5fb34f195e0b854615-",
+                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNi0yNFQwOTowNjowMC45NDBaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJhbGl5dW4vMjAyMDA2MjQvYmU0Njc4ZDlkMmRiNGU1ZmIzNGYxOTVlMGI4NTQ2MTUtIl1dfQ=="
+            }
+        },
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList)
+            },
+            handlePreview(file) {
+                console.log(file)
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+            },
+            beforeUpload(file) {
+                let size = file.size / 1024 / 1024
+                let type = ".jpg,.JPG,.jpeg,.JPEG,.png,.PNG,.gif,.GIF".split(",");
+                let fileType = file.name.substring(file.name.lastIndexOf("."))
+                if (size > 5) {
+                    this.$message.warning(`上传文件不能超过 5 M`)
+                    return false
+                }
+                if (type.indexOf(fileType) === -1) {
+                    this.$message.warning(`上传文件格式不正确`)
+                    return false
+                }
+            },
+            handleSuccess(response, file, fileList) {
+                console.log(response)
+                console.log(file)
+                console.log(fileList)
+            },
+            handleError(error, file, fileList) {
+                console.log(error)
+                console.log(file)
+                console.log(fileList)
+            },
+        }
+    });
+</script>
+</body>
+</html>

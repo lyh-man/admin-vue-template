@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 // 加了ApiOperation注解的类，才会生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 // 指定包下的类，才生成接口文档
-                .apis(RequestHandlerSelectors.basePackage("com.lyh.admin_template.back.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.lyh.admin_template.back"))
                 .paths(PathSelectors.any())
                 .build();
     }

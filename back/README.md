@@ -12,6 +12,8 @@
 
 [SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（一）： 搭建基本环境、整合 Swagger、MyBatisPlus、JSR303 以及国际化操作](https://www.cnblogs.com/l-y-h/p/13083375.html)
 
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（二）： 整合 Redis（常用工具类、缓存）、整合邮件发送功能](https://www.cnblogs.com/l-y-h/p/13163653.html)
+
 代码结构：
 ```javascript
 back

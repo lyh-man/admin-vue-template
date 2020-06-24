@@ -9,6 +9,10 @@
 
 [SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 前端篇（四）：引入 vuex 进行状态管理、引入 vue-i18n 进行国际化管理](https://www.cnblogs.com/l-y-h/p/12963576.html)
 
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 前端篇（五）：引入 vue-router 进行路由管理、模块化封装 axios 请求、使用 iframe 标签嵌套页面](https://www.cnblogs.com/l-y-h/p/12973364.html)
+
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 前端篇（六）：使用 vue-router 进行动态加载菜单](https://www.cnblogs.com/l-y-h/p/13052196.html)
+
 ## 代码地址
 [admin-vue-template](https://github.com/lyh-man/admin-vue-template.git)
 

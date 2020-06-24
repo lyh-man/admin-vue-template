@@ -64,3 +64,19 @@ spring:
       max-file-size: 10MB
       # 限制单次请求总文件大小
       max-request-size: 50MB
+  # 设置 json 中日期显示格式
+  jackson:
+    # 设置显示格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    # 设置时区
+    time-zone: GMT+8
+
+# 阿里云配置信息
+aliyun:
+  # common 配置信息
+  accessKeyId: LTAI4GEWZbLZocBzXKYEfmmq
+  accessKeySecret: rZLsruKxWex2qGYVA3UsuBgW5B3uJQ
+  # OSS 相关配置信息
+  endPoint: http://oss-cn-beijing.aliyuncs.com
+  bucketName: admin-vue-template
+  domain: http://admin-vue-template.oss-cn-beijing.aliyuncs.com
