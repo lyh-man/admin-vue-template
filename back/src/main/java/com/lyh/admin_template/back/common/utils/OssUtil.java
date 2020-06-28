@@ -159,4 +159,22 @@ public class OssUtil {
         }
         return map;
     }
+
+    /**
+     * 删除 OOS 中的文件
+     */
+    public void deleteObject(String objectName) {
+        try {
+            // 创建 OSSClient 实例。
+            OSS ossClient = new OSSClientBuilder().build(endPoint, accessKeyId, accessKeySecret);
+
+            // 删除指定 bucket 中的文件
+            ossClient.deleteObject(bucketName, objectName);
+
+            // 关闭 OSSClient
+            ossClient.shutdown();
+        } catch (Exception e) {
+            throw new RuntimeException("删除文件失败");
+        }
+    }
 }

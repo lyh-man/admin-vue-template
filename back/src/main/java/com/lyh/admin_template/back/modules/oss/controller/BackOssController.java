@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -33,6 +35,16 @@ public class BackOssController {
     private OssUtil ossUtil;
     @Autowired
     private BackOssService backOssService;
+
+    @ApiOperation(value = "删除文件")
+    @DeleteMapping("/delete/object")
+    public Result deleteObject(@RequestParam String key) {
+        ossUtil.deleteObject(key);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("oss_name", key);
+        backOssService.remove(queryWrapper);
+        return Result.ok();
+    }
 
     @ApiOperation(value = "获取签名数据")
     @GetMapping("/policy")

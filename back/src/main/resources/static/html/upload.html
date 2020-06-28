@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui@2.3.7/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui@2.3.7/lib/index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
 </head>
 <body>
 <div id="test">
@@ -33,6 +34,7 @@
         <!-- tip 表示提示文字 -->
         <div slot="tip">只能上传jpg/png/gif文件，且不超过 5 MB</div>
     </el-upload>
+    <el-button size="small" type="primary" @click="download">下载</el-button>
 </div>
 <script type="text/javascript">
     var vm = new Vue({
@@ -43,12 +45,12 @@
                 url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
             }],
             policyData: {
-                "signature": "H3mPx51DPO73i0NJKTLgzvjX5dA=",
-                "expire": "1592989560",
+                "signature": "Q5n13+6c7PZg2PKf6JgQ6rXvJbE=",
+                "expire": "1593001415",
                 "host": "http://admin-vue-template.oss-cn-beijing.aliyuncs.com",
                 "ossaccessKeyId": "LTAI4GEWZbLZocBzXKYEfmmq",
-                "key": "aliyun/20200624/be4678d9d2db4e5fb34f195e0b854615-",
-                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNi0yNFQwOTowNjowMC45NDBaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJhbGl5dW4vMjAyMDA2MjQvYmU0Njc4ZDlkMmRiNGU1ZmIzNGYxOTVlMGI4NTQ2MTUtIl1dfQ=="
+                "key": "aliyun/20200624/025a5edee3a34df19ed8b0d51d4c8053-signature",
+                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNi0yNFQxMjoyMzozNS4zNzJaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJhbGl5dW4vMjAyMDA2MjQvMDI1YTVlZGVlM2EzNGRmMTllZDhiMGQ1MWQ0YzgwNTMtc2lnbmF0dXJlIl1dfQ=="
             }
         },
         methods: {
@@ -84,6 +86,45 @@
                 console.log(file)
                 console.log(fileList)
             },
+            download() {
+                let url =
+                    "http://admin-vue-template.oss-cn-beijing.aliyuncs.com/aliyun/20200624/025a5edee3a34df19ed8b0d51d4c8053-signature?Expires=1908339884&OSSAccessKeyId=LTAI4GEWZbLZocBzXKYEfmmq&Signature=budNdWygT241vRNOVW9OCioZ4jQ%3D"
+                let url2 =
+                    "http://admin-vue-template.oss-cn-beijing.aliyuncs.com/aliyun/20200628/d634163008c949768e43eac29a17590d-test.mp4?Expires=1908668326&OSSAccessKeyId=LTAI4GEWZbLZocBzXKYEfmmq&Signature=eaquE4LP%2FgKguSD%2BIf3vMlHBt2w%3D"
+
+                // axios.get(url, {
+                // 	responseType: 'blob'
+                // }).then(res => {
+                // 	this.blobToFile(res.data, res.data.type)
+                // }).catch(error => {
+                // 	console.log(error)
+                // })
+
+                axios.get(url2, {
+                    responseType: 'blob'
+                }).then(res => {
+                    console.log(res)
+                    this.blobToFile(res.data, res.data.type)
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            blobToFile(res, type) {
+                // res.data是后台返回的二进制数据，type:types为下载的数据类型
+                let blob = new Blob([res], {
+                    type: type
+                })
+                let downLoadEle = document.createElement('a')
+                let href = URL.createObjectURL(blob)
+                downLoadEle.href = href
+                // ooo为自定义文件名
+                downLoadEle.download = 'ooo'
+                document.body.appendChild(downLoadEle)
+                downLoadEle.click()
+                document.body.removeChild(downLoadEle)
+                window.URL.revokeObjectURL(href)
+            }
         }
     });
 </script>
