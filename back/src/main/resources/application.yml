@@ -80,3 +80,7 @@ aliyun:
   endPoint: http://oss-cn-beijing.aliyuncs.com
   bucketName: admin-vue-template
   domain: http://admin-vue-template.oss-cn-beijing.aliyuncs.com
+  # SMS 短信服务
+  regionId: cn-hangzhou
+  signName: 后台管理系统
+  templateCode: SMS_194050461

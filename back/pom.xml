@@ -19,6 +19,13 @@
     </properties>
 
     <dependencies>
+        <!-- aliyun ssm -->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
         <!-- aliyun oss -->
         <dependency>
             <groupId>com.aliyun.oss</groupId>

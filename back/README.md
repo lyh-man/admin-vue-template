@@ -14,6 +14,8 @@
 
 [SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（二）： 整合 Redis（常用工具类、缓存）、整合邮件发送功能](https://www.cnblogs.com/l-y-h/p/13163653.html)
 
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（三）： 整合阿里云 OSS 服务 -- 上传、下载文件、图片](https://www.cnblogs.com/l-y-h/p/13202746.html)
+
 代码结构：
 ```javascript
 back
