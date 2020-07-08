@@ -33,9 +33,9 @@ public class SmsUtil {
     /**
      * 发送短信
      */
-    public boolean sendSms(String phoneNumbers) {
+    public String sendSms(String phoneNumbers) {
         if (StringUtils.isEmpty(phoneNumbers)) {
-            return false;
+            return null;
         }
         DefaultProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);
         IAcsClient client = new DefaultAcsClient(profile);
@@ -55,7 +55,8 @@ public class SmsUtil {
         // 设置短信模板
         request.putQueryParameter("TemplateCode", templateCode);
         // 设置短信验证码
-        request.putQueryParameter("TemplateParam", "{\"code\":" + getCode() +"}");
+        String code = getCode();
+        request.putQueryParameter("TemplateParam", "{\"code\":" + code +"}");
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
@@ -63,9 +64,9 @@ public class SmsUtil {
             SmsResponse smsResponse = GsonUtil.fromJson(response.getData(), SmsResponse.class);
             // 当 message 与 code 均为 ok 时，短信发送成功、否则失败
             if (SmsUtil.OK.equals(smsResponse.getMessage()) && SmsUtil.OK.equals(smsResponse.getCode())) {
-                return true;
+                return code;
             }
-            return false;
+            return null;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

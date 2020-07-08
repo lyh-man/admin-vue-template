@@ -14,15 +14,22 @@ import java.util.Date;
  */
 public class JwtUtil {
 
-    // 设置过期时间（15 分钟）
-    public static final long EXPIRE = 1000 * 60 * 15;
+    // 设置默认过期时间（15 分钟）
+    private static final long DEFAULT_EXPIRE = 1000L * 60 * 15;
     // 设置 jwt 生成 secret（随意指定）
-    public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO";
+    private static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO";
 
     /**
-     * 生成 jwt token
+     * 生成 jwt token，并指定默认过期时间 15 分钟
      */
-    public static String getJwtToken(String userId, String userName) {
+    public static String getJwtToken(Object data) {
+        return getJwtToken(data, DEFAULT_EXPIRE);
+    }
+
+    /**
+     * 生成 jwt token，根据指定的 过期时间
+     */
+    public static String getJwtToken(Object data, Long expire) {
         String JwtToken = Jwts.builder()
                 // 设置 jwt 类型
                 .setHeaderParam("typ", "JWT")
@@ -33,10 +40,9 @@ public class JwtUtil {
                 // 设置 jwt 发布时间
                 .setIssuedAt(new Date())
                 // 设置 jwt 过期时间
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
+                .setExpiration(new Date(System.currentTimeMillis() + expire))
                 // 设置自定义数据
-                .claim("userId", userId)
-                .claim("userName", userName)
+                .claim("data", data)
                 // 设置密钥与算法
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 // 生成 token

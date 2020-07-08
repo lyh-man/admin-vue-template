@@ -16,6 +16,10 @@
 
 [SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（三）： 整合阿里云 OSS 服务 -- 上传、下载文件、图片](https://www.cnblogs.com/l-y-h/p/13202746.html)
 
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（四）： 整合阿里云 短信服务、整合 JWT 单点登录](https://www.cnblogs.com/l-y-h/p/13214493.html)
+
+[SpringBoot + Vue + ElementUI 实现后台管理系统模板 -- 后端篇（五）： 数据表设计、使用 jwt、redis、sms 工具类完善注册登录逻辑](https://www.cnblogs.com/l-y-h/p/13264307.html)
+
 代码结构：
 ```javascript
 back

@@ -2,6 +2,7 @@ package com.lyh.admin_template.back.controller.test;
 
 import com.lyh.admin_template.back.common.utils.JwtUtil;
 import com.lyh.admin_template.back.common.utils.Result;
+import com.lyh.admin_template.back.modules.sys.entity.SysUser;
 import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +18,7 @@ public class TestJWTController {
     @ApiOperation(value = "获取 token")
     @PostMapping("/getToken")
     public Result testJwt() {
-        return Result.ok().data("token", JwtUtil.getJwtToken("1", "tom"));
+        return Result.ok().data("token", JwtUtil.getJwtToken("tom"));
     }
 
     @ApiOperation(value = "测试是否过期")

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * mapper 扫描也可在此写上
  */
 @Configuration
-@MapperScan(basePackages = {"com.lyh.admin_template.back.mapper", "com.lyh.admin_template.back.modules.oss.mapper"})
+@MapperScan(basePackages = {"com.lyh.admin_template.back.mapper", "com.lyh.admin_template.back.modules.**.mapper"})
 public class MyBatisPlusConfig {
     /**
      * 分页插件
